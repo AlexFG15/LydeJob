@@ -1,0 +1,136 @@
+
+<link href="/Template/inspina/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+<div class="row">
+    <div class="col-sm-8">
+      <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="ibox">
+          <div class="ibox-title">
+            <h5> Asignaci&oacute;n de productos </h5>
+            <div class="ibox-tools">
+              <a class="btn btn-primary btn-xs" id="btn-add"><i class="fa fa-plus"></i> Agregar</a>
+            </div>
+          </div>
+          <div class="ibox-content">
+            <div class="row" id="tablaHeader">
+
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Hereda serie</th>
+                            <th>Cantidad</th>
+                            <th>SKU</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                <tbody  id="listaProductos">
+                </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" id="buscador-productos" style="display: none;">
+      <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="ibox">
+          <div class="ibox-title">
+            <h5>  B&uacute;squeda de productos</h5>
+          </div>
+          <div class="ibox-content">
+            <div class="form-horizontal" id="frmBuscador">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">SKU/Nombre:</label>
+                <div class="col-sm-8">
+                  <div class="m-b">
+                    <input class="form-control input-sm" type="text" id="input-prodcuto" placeholder="SKU/Nombre" autocomplete="off" >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pull-right m-t-n-sm"> 
+                <button class="btn btn-sm btn-success btnBuscar" id="btn-Buscar" type="button"><i class="fa fa-search"></i>&nbsp;&nbsp;<span class="bold">Buscar</span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+              <p> &nbsp; </p>
+            </div>
+            <div class="row" id="grid-productos" style="display: none;">
+              <div class="ibox">
+                  <div class="table-responsive full-height-scroll" style="max-height:600px ;">
+                    <table class="table table-condensed" >
+                      <tbody id="gridProductosBusqueda">
+                        <div id="Cargando"></div>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--<label class="font-bold mt-0" for="closeButton"><input id="heredaS{{proid}}" type="checkbox"   class="i-checks" ></label>-->
+
+
+ <script type="text/template" id="templateHeader">
+    <div class="col-sm-12 m-b-xs">
+        <div class="col-sm-4 "><h3 class="textCopy">SKU: {{SKU}}</h3></div>
+        <div class="col-sm-8"> 
+          <h3><span>Nombre:</span>  {{Nombre}}</h3>
+          <h3> <span>Descripci&oacute;n:</span>  {{Descripcion}}</h3> 
+        </div>
+    </div>
+  </script> 
+
+  <script type="text/template" id="templateProductos">
+    <tr>
+        <td> {{nombre}}</td>
+        <td>
+            <input class="i-checks"  name="tipoR" id="heredaS{{proid}}" type="radio" value="{{hereda}}"  data-proid="{{proid}}"> 
+        </td>
+        <td> {{cantidad}} </td>
+        <td> {{sku}} </td>
+        <td><button class="btn btn-danger btn-xs" data-proid="{{proid}}"><i class="fa fa-trash"></i></button> </td>
+    </tr>
+  </script>
+
+  <script type="text/template" id="templateProdutoBusqueda">
+    <tr>
+        <td>
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-sm-4">
+                <h3> <a class="text-navy">{{SKU}}</a> </h3>
+              </div>
+              <div class="col-sm-4 text-center">
+                <input class="form-control" placeholder="0" id="c{{Pro_ID}}" type="number" min="0">
+              </div>
+              <div class="col-sm-4">
+                <button class="btn btn-primary btn-xs" id="btn-addsku" data-proid="{{Pro_ID}}"><i class="fa fa-plus"></i> Agregar</button>
+              </div>
+            </div><br>
+            <div class="row">
+              <p>  {{nombre_prod}}</p>
+              <dl class="small m-b-none">
+                <dt> Descripci&oacute;n </dt>
+                <dd> {{descripcion_prod}}</dd>
+              </dl>
+            </div>
+          </div>
+        </td>
+      </tr>
+  </script>
+
+<script src="/Template/inspina/js/inspinia.js"></script>
+<script src="/Template/inspina/js/bootstrap.min.js"></script>
+<script src="/Template/inspina/js/plugins/iCheck/icheck.min.js"></script>
+<script src="/Template/inspina/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript">
+    var Main = document.createElement('script');
+    Main.setAttribute( 'type', "module" );
+    Main.setAttribute( 'src', "/pz/wms/Producto/Producto/Producto_ListaMateriales.js");
+    document.body.appendChild( Main );
+  </script>
